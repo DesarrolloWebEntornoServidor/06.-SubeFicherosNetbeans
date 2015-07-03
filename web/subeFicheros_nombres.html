@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <title>Subida de ficheros al servidor</title>
+    </head>
+    <body>
+        <h1>SubeFicheros_nombres</h1>
+        <form action="SubeFicheros" method="post" enctype="multipart/form-data">         
+            Descripción <textarea name="descripcion"></textarea> <br /><br />
+            <input type="file" name="archivos" id ="archivos" multiple="multiple"/> <br /><br />
+            <span id="lista_archivos"></span>
+            <input type="submit" />
+        </form>
+                <script>
+            document.getElementById('archivos').addEventListener('change', function(e) {
+            var list = document.getElementById('lista_archivos');
+            list.innerHTML = '';
+            for (var i=0;i<this.files.length;i++) {
+                list.innerHTML += (i+1) + '. ' + this.files[i].name + ' <br /> \n';
+            }
+            if (list.innerHTML == '') list.style.display = 'none';
+            else list.style.display = 'block';
+            });
+        </script>
+       
+    </body>
+</html>
+
+
